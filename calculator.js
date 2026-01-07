@@ -21,11 +21,11 @@ numButtons.forEach(numButton => {
         return; // Don't add more zeros
       }
       tempNum = numCharPressed;
-      
+
       updateCalcDisplay(tempNum);
       return;
     }
-    
+
     tempNum += numCharPressed;
     updateCalcDisplay(tempNum);
   });
@@ -41,7 +41,7 @@ operatorButtons.forEach(operatorButton => {
     } else if (num2 === '') {
       num2 = tempNum;
       num1 = String(operate(prevOperator, num1, num2));
-      
+
       if (isNaN(num1)) {
         resetCalculator();
         updateCalcDisplay('Nice Try Bro 😉');
@@ -61,6 +61,34 @@ operatorButtons.forEach(operatorButton => {
 
 clearBtn.addEventListener('click', () => {
   resetCalculator();
+});
+
+equalsBtn.addEventListener('click', () => {
+  if (num2 === '' && currOperator) {
+    num2 = tempNum;
+
+    if (num2 === '') {
+      resetCalculator();
+      return;
+    }
+
+    num1 = String(operate(currOperator, num1, num2));
+
+    if (isNaN(num1)) {
+      resetCalculator();
+      updateCalcDisplay('Nice Try Bro 😉');
+      tempNum = '';
+      return;
+    }
+
+    updateCalcDisplay(num1);
+
+    num1 = '';
+    num2 = '';
+    tempNum = '';
+    currOperator = null;
+    prevOperator = null;
+  }
 });
 
 function resetCalculator() {
