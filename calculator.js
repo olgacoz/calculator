@@ -2,6 +2,12 @@ let num1 = '';
 let num2 = '';
 let operator = null;
 
+const calcDisplay = document.querySelector('#calc-display');
+const numButtons = document.querySelectorAll('.num-btn');
+const operatorButtons = document.querySelectorAll('.operator-btn');
+const clearBtn = document.querySelector('#clear-btn');
+const equalsBtn = document.querySelector('#equals-btn');
+
 function operate(operator, a, b) {
   switch (operator) {
     case '+': return add(a, b);
