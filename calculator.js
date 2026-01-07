@@ -1,5 +1,6 @@
 let num1 = '';
 let num2 = '';
+let tempNum = '0';
 let operator = null;
 
 const calcDisplay = document.querySelector('#calc-display');
@@ -7,6 +8,31 @@ const numButtons = document.querySelectorAll('.num-btn');
 const operatorButtons = document.querySelectorAll('.operator-btn');
 const clearBtn = document.querySelector('#clear-btn');
 const equalsBtn = document.querySelector('#equals-btn');
+
+calcDisplay.textContent = tempNum;
+
+numButtons.forEach(numButton => {
+  numButton.addEventListener('click', () => {
+    const numCharPressed = numButton.textContent;
+
+    if (tempNum === '0') {
+      if (numCharPressed === '0') {
+        return; // Don't add more zeros
+      }
+      tempNum = numCharPressed;
+      
+      updateCalcDisplay(tempNum);
+      return;
+    }
+    
+    tempNum += numCharPressed;
+    updateCalcDisplay(tempNum);
+  });
+});
+
+function updateCalcDisplay(num) {
+  calcDisplay.textContent = num;
+}
 
 function operate(operator, a, b) {
   switch (operator) {
