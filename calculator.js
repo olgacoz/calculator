@@ -41,6 +41,14 @@ operatorButtons.forEach(operatorButton => {
     } else if (num2 === '') {
       num2 = tempNum;
       num1 = String(operate(prevOperator, num1, num2));
+      
+      if (isNaN(num1)) {
+        resetCalculator();
+        updateCalcDisplay('Nice Try Bro 😉');
+        tempNum = '';
+        return;
+      }
+
       updateCalcDisplay(num1);
 
       tempNum = '';
@@ -95,7 +103,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
   if (b == 0) {
-    return 'Nice Try Bro 😉'
+    return NaN;
   }
 
   return a / b;
