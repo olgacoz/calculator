@@ -58,6 +58,12 @@ button:active {
   align-items: end;
   margin-bottom: 10px;
   padding-right: 5px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#display-text {
+  min-width: 0;
 }
 
 .row {

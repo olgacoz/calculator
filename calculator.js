@@ -4,7 +4,7 @@ let tempNum = '0';
 let currOperator = null;
 let prevOperator = null;
 
-const calcDisplay = document.querySelector('#calc-display');
+const calcDisplay = document.querySelector('#display-text');
 const numButtons = document.querySelectorAll('.num-btn');
 const operatorButtons = document.querySelectorAll('.operator-btn');
 const clearBtn = document.querySelector('#clear-btn');
