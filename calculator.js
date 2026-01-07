@@ -51,6 +51,20 @@ operatorButtons.forEach(operatorButton => {
   });
 });
 
+clearBtn.addEventListener('click', () => {
+  resetCalculator();
+});
+
+function resetCalculator() {
+  num1 = '';
+  num2 = '';
+  tempNum = '0';
+  currOperator = null;
+  prevOperator = null;
+
+  updateCalcDisplay(tempNum);
+}
+
 function updateCalcDisplay(num) {
   calcDisplay.textContent = num;
 }
