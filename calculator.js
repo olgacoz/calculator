@@ -1,7 +1,8 @@
 let num1 = '';
 let num2 = '';
 let tempNum = '0';
-let operator = null;
+let currOperator = null;
+let prevOperator = null;
 
 const calcDisplay = document.querySelector('#calc-display');
 const numButtons = document.querySelectorAll('.num-btn');
@@ -27,6 +28,26 @@ numButtons.forEach(numButton => {
     
     tempNum += numCharPressed;
     updateCalcDisplay(tempNum);
+  });
+});
+
+operatorButtons.forEach(operatorButton => {
+  operatorButton.addEventListener('click', () => {
+    currOperator = operatorButton.textContent;
+
+    if (num1 === '') {
+      num1 = tempNum;
+      tempNum = '';
+    } else if (num2 === '') {
+      num2 = tempNum;
+      num1 = String(operate(prevOperator, num1, num2));
+      updateCalcDisplay(num1);
+
+      tempNum = '';
+      num2 = '';
+    }
+
+    prevOperator = currOperator;
   });
 });
 
